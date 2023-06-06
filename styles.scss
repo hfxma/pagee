@@ -1,0 +1,87 @@
+$blck: #121219;
+$wht: #f5f5f7;
+$p1:#E37777;
+$p2:#73ADED;
+$p3:#A9D18E;
+$p4:#EAAF60;
+* {
+    margin:0;padding:0;box-sizing: border-box;
+}
+body {
+    background-color: $wht;
+}
+@mixin cons {
+    background-color: $wht;
+    border-radius: 1.3em;
+    border: 1px solid $blck;
+    border-collapse: collapse;
+    display: inline-block;
+}
+#container {
+    width:95%;margin:0 auto 0 auto;
+    background-color: #121212;
+    border: 0.5px solid $blck;
+    border-collapse: collapse;
+    display: flex;
+    flex-wrap: wrap;
+}
+#container > div {
+    @include cons()
+}
+#start {
+    background-color: $wht;
+    border-radius: 1.3em;
+    padding: 5% 10% 7% 10%;
+    width:70%; height:27em;
+}
+#start img {
+    width:20rem;
+}
+#start h3 {
+    font-size: 500%;
+    width:30vw;
+    cursor:default;
+}
+#start button {
+    padding: 0.3em 1em 0.3em 1em;
+    font-size:200%;
+    border-radius: 0.8em;
+    margin-top:1.71em;
+    border:1px solid $blck;
+    transition: background-color 100ms linear;
+    cursor:pointer;
+    font-weight: 700;
+}
+#start button:hover {
+    background-color: $p4;
+}
+#start-2 {
+    width:30%;
+    height:27em;
+}
+img[src="./pics/woman.png"] {
+    position: absolute;
+    width:26em;
+    height:22em;
+    object-fit:cover;
+    object-position: 0% 0%;
+    border-bottom: 1;
+    top:5em; left:calc(73vw - 18em);
+    transform: scaleX(-1);
+    filter:grayscale(1);
+}
+#why-1, #why-2, #why-3 {
+    width: calc(100%/3);
+    height:24em;
+    padding:2.4em;
+}
+[id^="why-"] h3 {
+    font-family: Helvetica, sans-serif;
+    font-size: 270%;
+    height:3.5em;
+    margin-bottom: 0.5em;
+}
+[id^="why-"] p {
+    font-family: sans-serif;
+    margin-top:2em;
+}
