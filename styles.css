@@ -1,98 +1,270 @@
+:root {
+  font-size: 3vw;
+  scrollbar-width: 0;
+  -ms-overflow-style: none;
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 body {
-  background-color: #f5f5f7;
+  width: 100%;
+  scrollbar-width: 0px;
+  scrollbar-width: 0;
+  -ms-overflow-style: none;
 }
 
-#container {
-  width: 95%;
-  margin: 0 auto 0 auto;
+body::-webkit-scrollbar {
+  display: none;
+}
+
+header {
+  width: 100%;
+  position: relative;
+  padding-top: 3.6em;
+  background: #eaaf60;
+  background-image: url(./pics/noise.png);
+  background-attachment: fixed;
+  height: 55vw;
+}
+
+img[src="./8-star.png"] {
+  width: 2em;
+  z-index: 2;
+  position: absolute;
+  left: 55vw;
+  animation: spin-back 10s linear infinite;
+  filter: drop-shadow(0 0 1em #9e84f0);
+}
+
+hr {
+  width: 61.8%;
+  opacity: 50%;
+  margin: 0.5rem auto;
+  height: 1px;
+  border: 0;
   background-color: #121212;
-  border: 0.5px solid #121219;
-  border-collapse: collapse;
+}
+
+#header-1 {
+  display: grid;
+  padding-left: 2em;
+  padding-right: 2em;
+  filter: opacity(90%);
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr;
+}
+#header-1 div:has(img) {
+  grid-column: 1;
+  filter: brightness(0.2) saturate(5);
+  grid-row: 1/4;
+  position: relative;
+}
+#header-1 img {
+  width: 55vw;
+}
+#header-1 #header-links {
+  grid-column: 2;
+  font-size: 50%;
+  grid-row: 1;
   display: flex;
+  gap: 2em;
+  padding-left: 2rem;
+}
+#header-1 h2 {
+  font-size: 150%;
+  grid-column: 2;
+  grid-row: 1;
+  padding-bottom: 0.5rem;
+  padding-top: 1.3rem;
+  padding-left: 2rem;
+}
+
+#header-2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  vertical-align: bottom;
+  justify-content: space-between;
+  position: absolute;
+  bottom: calc(100% - 45vw + 2em);
+  padding: 0 1rem 0.2em 1.8em;
+}
+#header-2 h4 {
+  font-weight: 700;
+  font-size: 70%;
+  filter: opacity(90%);
+  letter-spacing: 0.3px;
+  height: 100%;
+  vertical-align: bottom;
+}
+#header-2 button {
+  font-size: 0.6rem;
+  border-radius: 1.5em;
+  padding: auto;
+  height: 2em;
+  width: 8em;
+  border: 1px solid #000000;
+}
+
+img[src="./scr-1.png"] {
+  position: relative;
+  position: absolute;
+  width: 2rem;
+  z-index: 5;
+  top: -35%;
+  left: 3rem;
+}
+
+#visi {
+  font-size: 200%;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+#visi h5 {
+  opacity: 1.25;
+  padding: 2em 3em;
+  position: relative;
+  transition: left 2s ease-in-out;
+}
+
+#fitur-con {
+  overflow: hidden;
+  width: 100%;
+}
+
+#fitur {
+  padding: 2rem 2.5rem 2rem 4.5rem;
+  background-color: rgba(169, 209, 142, 0.1333333333);
+  height: -moz-max-content;
+  height: max-content;
+  width: 300vw;
+  font-size: 200%;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background-color 0.5s ease-in-out;
+}
+#fitur h3, #fitur p {
+  transition: opacity 0.25s ease-in-out;
+  opacity: 90%;
+  color: #a9d18e;
+  filter: saturate(2) brightness(0.6) hue-rotate(30deg);
+}
+#fitur h3 {
+  font-size: 100%;
+}
+#fitur p {
+  width: 90%;
+  font-size: 36%;
+  margin-top: 1.2em;
+  transition-property: opacity, transform;
+  transition: 0.2s ease-in-out;
+}
+
+#tri {
+  width: 3rem;
+  position: relative;
+  position: absolute;
+  top: 3.5rem;
+  left: 80vw;
+  aspect-ratio: 1/1;
+  opacity: 100%;
+  z-index: 8;
+  transition: all 0.5s ease-in-out;
+}
+#tri polygon {
+  fill: #a9d18e;
+  transition: all 0.5s ease-in-out;
+}
+
+#kece {
+  background-image: url(pics/grid.png);
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 5%, #000000 10%, #000000 90%, rgba(0, 0, 0, 0) 95%);
+          mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 5%, #000000 10%, #000000 90%, rgba(0, 0, 0, 0) 95%);
+  background-position: 50%;
+  background-size: 0.8rem;
+}
+#kece h1 {
+  text-align: center;
+  padding-top: 1em;
+}
+#kece img[src^="./pics/rec"] {
+  width: 2rem;
+}
+#kece span {
+  width: 9.5rem;
+  margin-top: 2rem;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
   flex-wrap: wrap;
 }
-
-#container > div {
-  background-color: #f5f5f7;
-  border-radius: 1.3em;
-  border: 1px solid #121219;
-  border-collapse: collapse;
-  display: inline-block;
+#kece span * {
+  transition: all 0.5s ease-in-out;
 }
 
-#start {
-  background-color: #f5f5f7;
-  border-radius: 1.3em;
-  padding: 5% 10% 7% 10%;
-  width: 70%;
-  height: 27em;
+#graph {
+  width: 10rem;
+  aspect-ratio: 1.4/1;
+  border-bottom: 0.2rem solid #9e84f0;
+  margin: 0 auto;
+  transition: none;
+  margin-top: 2rem;
+  gap: 1%;
+  padding: 0 0.4rem;
+  display: flex;
+  align-items: flex-end;
+}
+#graph div {
+  height: 100%;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(#000000 20%, rgba(0, 0, 0, 0) 100%);
+          mask-image: linear-gradient(#000000 20%, rgba(0, 0, 0, 0) 100%);
+}
+#graph div p {
+  font-size: 90%;
+  text-align: center;
+  transform: translateY(50%);
+  opacity: 1;
+  color: #ffffff;
+  font-weight: 300;
+}
+#graph div:nth-child(4n+1) {
+  background-image: url(pics/rec1.png);
+}
+#graph div:nth-child(4n+2) {
+  background-image: url(pics/rec2.png);
+}
+#graph div:nth-child(4n+3) {
+  background-image: url(pics/rec3.png);
+}
+#graph div:nth-child(4n+4) {
+  background-image: url(pics/rec4.png);
 }
 
-#start img {
-  width: 20rem;
+footer {
+  padding: 2rem 2rem;
+  font-size: 50%;
+  line-height: 1.5em;
+  background-color: #121212;
+  color: #f6f6ff;
 }
 
-#start h3 {
-  font-size: 500%;
-  width: 30vw;
-  cursor: default;
-}
-
-#start button {
-  padding: 0.3em 1em 0.3em 1em;
-  font-size: 200%;
-  border-radius: 0.8em;
-  margin-top: 1.71em;
-  border: 1px solid #121219;
-  transition: background-color 100ms linear;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-#start button:hover {
-  background-color: #EAAF60;
-}
-
-#start-2 {
-  width: 30%;
-  height: 27em;
-}
-
-img[src="./pics/woman.png"] {
-  position: absolute;
-  width: 26em;
-  height: 22em;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: 0% 0%;
-     object-position: 0% 0%;
-  border-bottom: 1;
-  top: 5em;
-  left: calc(73vw - 18em);
-  transform: scaleX(-1);
-  filter: grayscale(1);
-}
-
-#why-1, #why-2, #why-3 {
-  width: 33.3333333333%;
-  height: 24em;
-  padding: 2.4em;
-}
-
-[id^=why-] h3 {
-  font-family: Helvetica, sans-serif;
-  font-size: 270%;
-  height: 3.5em;
-  margin-bottom: 0.5em;
-}
-
-[id^=why-] p {
-  font-family: sans-serif;
-  margin-top: 2em;
+@keyframes spin-back {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }/*# sourceMappingURL=styles.css.map */
