@@ -102,7 +102,7 @@ setInterval(ambient, 15);
 
 const bar = document.getElementById("energy-bar")
 const lev = document.getElementById("energy-bar-sl")
-const ener = {
+let ener = {
     color: ['#da7070', '#e4d284', '#85aed7', '#93cd81'],
     meter: [25, 50, 75, 100],
     def:['Exhausted', 'Low', 'Medium', 'High'],
@@ -141,27 +141,48 @@ const ener = {
 
         }
     }
-    const p = document.getElementById("energy").querySelector("p")
-    const ul = document.getElementById("energy").querySelector("ul")
-    const lov = document.getElementById("energy").querySelector("h2")
-    const met1 = document.getElementById("energy").querySelector("h1")
-    const enercl = (event) => {
-        const wBar = bar.offsetWidth;
-        const wLev = lev.offsetWidth;
-    const x = event.clientX - bar.offsetLeft - wLev / 2;
-    lev.style.transform = "translate(" + minmax(x, 0, wBar - wLev + 1) + "px, -3px)";
-    let perr = Math.trunc(perc(x, wBar - wLev));
-    let In = Math.trunc(perr/(100/ener.meter.length))
-    ul.innerHTML = '<li>' + ener.act[In].join('</li><li>') + '</li>';
-    lov.innerHTML = 'Your current energy level:'
-    met1.parentElement.style.color
-    met1.innerHTML = ener.def[In] + ' <span>' + perr + "%</span>";
-    met1.style.color = ener.color[In];
-    p.innerHTML = ener.deff[In];
-    lev.style.backgroundColor = ener.color[In];
-    bar.addEventListener("mousemove", enercl);
+const p = document.getElementById("energy").querySelector("p")
+const ul = document.getElementById("energy").querySelector("ul")
+const lov = document.getElementById("energy").querySelector("h2")
+const met1 = document.getElementById("energy").querySelector("h1")
+let enerTime = {
+    day: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    time: ['01:00','03:00','05:00','10:00','15:00','19:45'],
+    level: [80, 20, 80, 10, 40, 90]
 }
-bar.addEventListener("mousedown", enercl)
-bar.addEventListener("mouseup", () => {
-    bar.removeEventListener("mousemove", enercl);
+const convertPlus = () => {
+    fi = enerTime.time[0].split(":");
+    fi[0] = parseInt(fi[0])+24;
+    return fi.join(":");
+}
+enerTime.time.push(convertPlus())
+enerTime.level.push(enerTime.level[0])
+let Si = enerTime.time.map(u => {
+    u = u.split(":")
+    u[0] = parseInt(u[0])
+    u[1] = parseInt(u[1])
+    return (u[0]*60 + u[1])*60*1000
 })
+const timeFlex = () => {
+    const wBar = bar.offsetWidth;
+    const wLev = lev.offsetWidth;
+    const now = Date.now();
+    const naw = (now+25200000) % 86400000;
+let currLev = 0
+for (let i = 0; i < Si.length - 1; i++) {
+    if (naw >= Si[i] && naw < Si[i + 1]) {
+        let perc = (naw-Si[i])/(Si[i+1]-Si[i])
+        currLev = ((perc*(enerTime.level[i+1]-enerTime.level[i])+enerTime.level[i])).toFixed(0)
+    }
+}    
+let im = Math.trunc((currLev-1)/(100/ener.meter.length))
+lev.style.transform = "translate(" + minmax((currLev/100)*wBar, 0, wBar - wLev + 1) + "px, -3px)";
+ul.innerHTML = '<li>' + ener.act[im].join('</li><li>') + '</li>';
+lov.innerHTML = 'Your estimated energy level:'
+met1.innerHTML = ener.def[im] + ' <span>' + currLev + "%</span>";
+met1.style.color = ener.color[im];
+p.innerHTML = ener.deff[im];
+lev.style.backgroundColor = ener.color[im];
+}
+
+setInterval(timeFlex, 4)

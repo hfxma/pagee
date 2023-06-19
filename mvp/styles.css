@@ -145,6 +145,10 @@ hr {
 }
 
 #energy {
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  height: 20rem;
   padding: 2rem 2rem 2rem 3rem;
 }
 #energy > h2 {
@@ -157,7 +161,7 @@ hr {
 #energy > h1 {
   font-size: 300%;
   color: #85aed7;
-  padding: 0.6rem 0 0.4rem 0;
+  padding: 0.6rem 0 0.1rem 0;
 }
 #energy > h1 span {
   opacity: 40%;
@@ -165,6 +169,7 @@ hr {
 }
 #energy > p {
   font-size: 71%;
+  padding-top: 0.3rem;
   width: 50%;
 }
 #energy #energy-sug {
