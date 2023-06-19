@@ -176,7 +176,7 @@ for (let i = 0; i < Si.length - 1; i++) {
     }
 }    
 let im = Math.trunc((currLev-1)/(100/ener.meter.length))
-lev.style.transform = "translate(" + minmax((currLev/100)*wBar, 0, wBar - wLev + 1) + "px, -3px)";
+lev.style.transform = "translate(" + minmax((currLev/100)*wBar-wLev/2, 0, wBar - wLev + 1) + "px, -3px)";
 ul.innerHTML = '<li>' + ener.act[im].join('</li><li>') + '</li>';
 lov.innerHTML = 'Your estimated energy level:'
 met1.innerHTML = ener.def[im] + ' <span>' + currLev + "%</span>";
